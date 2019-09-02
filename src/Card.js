@@ -18,28 +18,21 @@ class Card extends React.Component {
 
 
 class Form extends React.Component{
-    /* constructor(...props){
-         super(...props)
-         this.state={
-             userInput: ''
-         }
-     } */
 
-    //state= {userName:''}
+    state= {userName:''}
 
-    userNameInput=React.createRef();
     handleSubmit=(event) => {
         event.preventDefault();
-        console.log(this.userNameInput.current.value)
+        console.log(this.state.userName)
     };
 
     render() {
         return(
             <form onSubmit={this.handleSubmit}>
                 <input type={'text'}
-                       //value={this.state.userName}
-                       placeholder={'Enter User Name'}
-                       ref={this.userNameInput}/>
+                       value={this.state.userName}
+                       onChange={(event)=> this.setState({userName: event.target.value})}
+                       placeholder={'Enter User Name'}/>
                 <button>Submit</button>
             </form>
         )
