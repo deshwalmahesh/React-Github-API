@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-export default class Card extends React.Component {
+class Card extends React.Component {
     render() {
         const profile = this.props;
         return (
@@ -15,3 +15,33 @@ export default class Card extends React.Component {
         );
     }
 }
+
+
+class Form extends React.Component{
+    /* constructor(...props){
+         super(...props)
+         this.state={
+             userInput: ''
+         }
+     } */
+
+    userInput=React.createRef();
+    handleSubmit=(event) => {
+        event.preventDefault();
+        console.log(this.userInput.current.value)
+    };
+
+    render() {
+        return(
+            <form onSubmit={this.handleSubmit} ref={this.userInput} action=''>
+                <input type={'text'} placeholder={'Enter User Name'}/>
+                <button>Submit</button>
+            </form>
+        )
+    };
+}
+
+
+export {
+    Form,Card
+}  //Exporting without default
